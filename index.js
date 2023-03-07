@@ -4,14 +4,16 @@ const cors = require("cors");
 
 const app = express();
 
-// Set up database connection pool
+require('dotenv').config();
+
 const pool = new Pool({
-  user: "javohirberdiyev",
-  host: "localhost",
-  database: "javohirberdiyev",
-  password: "1234",
-  port: 5432, // Default Postgres port
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_DATABASE,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
+
 
 // Middleware to parse request body as JSON
 app.use(express.json());
